@@ -12,6 +12,18 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.owner()]),
+  Hoge: a
+    .model({
+      HogeContent: a.string(),
+      HogeNum: a.integer(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  Fuga: a
+    .model({
+      FugaContent: a.string(),
+      FugaBool: a.boolean(),
+    })
+    .authorization((allow) => [allow.guest()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
